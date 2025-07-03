@@ -1,21 +1,15 @@
+import { AsyncPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-notes-main',
-  imports: [],
+  imports: [AsyncPipe],
   templateUrl: './notes-main.html',
   styleUrl: './notes-main.scss',
   standalone: true,
 })
-export class NotesMain implements OnInit {
+export class NotesMain {
   http = inject(HttpClient);
-
-  ngOnInit(): void {
-    this.http
-      .get('http://localhost:3000/', { responseType: 'text' })
-      .subscribe((res) => {
-        console.log(res);
-      });
-  }
+  myTest$ = this.http.get('http://localhost:3000/', { responseType: 'text' });
 }

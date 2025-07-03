@@ -1,1 +1,5 @@
-<p>dashboard-main works!</p>
+<section class="p-8 flex flex-col gap-4">
+  @for(task of tasks; track $index) {
+  <app-dashboard-card></app-dashboard-card>
+  }
+</section>
