@@ -1,13 +1,17 @@
 <div
   @verticalSlide
-  class="flex items-center border border-gray-200 rounded-xl p-4 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 w-full max-w-md"
+  class="flex flex-col gap-3 border border-gray-200 rounded-xl cursor-move p-4 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 w-full max-w-md"
 >
-  <input
-    type="text"
-    class="flex-1 border-0 text-gray-900 text-sm focus:ring-0 focus:outline-none bg-transparent"
-    placeholder="Add a new task..."
-  />
-  <button class="text-gray-400 hover:text-red-500 cursor-pointer">
-    <mat-icon>delete</mat-icon>
-  </button>
+  <div class="flex items-center justify-between">
+    <span class="font-bold mb-auto">I.</span>
+    <button class="text-gray-400 hover:text-red-500 cursor-pointer">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div class="flex items-center">
+    <textarea
+      class="flex-1 border-0 text-gray-900 text-sm focus:ring-0 focus:outline-none bg-transparent"
+      placeholder="Add a new task..."
+    ></textarea>
+  </div>
 </div>

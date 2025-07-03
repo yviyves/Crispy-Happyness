@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { DashboardCard } from '../dashboard-card/dashboard-card';
+import { CdkDrag } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-dashboard-main',
-  imports: [DashboardCard],
+  imports: [DashboardCard, CdkDrag],
   templateUrl: './dashboard-main.html',
   styleUrl: './dashboard-main.scss',
   standalone: true,
 })
 export class DashboardMain {
-  tasks: any[] = [1, 2, 3];
+  @ViewChild('container') container!: ElementRef<HTMLElement>;
+
+  tasks: any[] = [1];
 }

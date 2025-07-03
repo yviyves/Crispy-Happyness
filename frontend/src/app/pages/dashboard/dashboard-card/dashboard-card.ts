@@ -11,13 +11,4 @@ import { verticalSlide } from '../../../shared/animations/basicAnimations';
   standalone: true,
   animations: [verticalSlide],
 })
-export class DashboardCard {
-  task: any;
-  deleteTask() {
-    throw new Error('Method not implemented.');
-  }
-  showDetails: any;
-  updateDescription($event: Event) {
-    throw new Error('Method not implemented.');
-  }
-}
+export class DashboardCard {}
