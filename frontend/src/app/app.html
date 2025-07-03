@@ -1,1 +1,7 @@
-<router-outlet />
+<app-header></app-header>
+<mat-drawer-container style="height: 100vh">
+  <mat-drawer mode="side" [opened]="sideNavIsExtendedStore.isExtended()">
+    <app-side-navigation></app-side-navigation>
+  </mat-drawer>
+  <mat-drawer-content><router-outlet /></mat-drawer-content>
+</mat-drawer-container>
