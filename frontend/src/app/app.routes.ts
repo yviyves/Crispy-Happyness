@@ -13,12 +13,12 @@ export const routes: Routes = [
     component: MeditationMain,
   },
   {
-    path: 'dashboard',
+    path: 'notes',
     component: DashboardMain,
   },
   {
     path: '**',
-    redirectTo: '/dashboard',
+    redirectTo: '/notes',
     pathMatch: 'full',
   },
 ];
