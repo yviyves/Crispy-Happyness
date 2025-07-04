@@ -1,0 +1,12 @@
+<div
+  class="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-sm"
+>
+  <div class="flex flex-col items-center h-64 w-64">
+    <ng-lottie
+      [options]="celebrationOptions"
+      (animationCreated)="animationCreated($event)"
+    >
+    </ng-lottie>
+    <h2 class="text-2xl font-bold">Meditation complete!</h2>
+  </div>
+</div>

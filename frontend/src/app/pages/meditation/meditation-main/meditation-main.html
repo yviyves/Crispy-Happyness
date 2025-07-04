@@ -1,1 +1,15 @@
-<p>meditation-main works!</p>
+<section class="p-16 h-full flex flex-col justify-center items-center">
+  @if (meditationTimerService.meditationIsRunning()) {
+  <div class="mb-10 text-2xl">
+    {{ meditationTimerService.remainingDurationInSeconds() | formatTime }}
+  </div>
+  }
+  <button
+    @verticalSlide
+    mat-flat-button
+    color="primary"
+    (click)="startMeditation()"
+  >
+    Start Meditation
+  </button>
+</section>

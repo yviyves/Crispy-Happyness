@@ -9,6 +9,8 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { Header } from './layout/header/header';
 import { SideNavigation } from './layout/side-navigation/side-navigation';
 import { SideNavIsExtendedStore } from './layout/services/side-nav-is-extended-store';
+import { Overlay } from './shared/components/overlay/overlay';
+import { OverlayService } from './shared/components/overlay/overlay-service';
 
 @Component({
   selector: 'app-root',
@@ -21,12 +23,13 @@ import { SideNavIsExtendedStore } from './layout/services/side-nav-is-extended-s
     RouterModule,
     Header,
     SideNavigation,
+    Overlay,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   standalone: true,
 })
 export class App {
-  protected title = 'frontend';
   protected sideNavIsExtendedStore = inject(SideNavIsExtendedStore);
+  protected overlayService = inject(OverlayService);
 }
