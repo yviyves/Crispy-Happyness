@@ -1,10 +1,12 @@
 <div class="flex flex-col gap-4 p-6">
   <div class="flex flex-row gap-8">
     <div @primary class="bg-white rounded-xl p-6 shadow-sm">
-      longest meditation: {{ getLongestSession().duration }} min
+      <span class="font-bold">Longest Meditation Time:</span>
+      <span class="ml-2">{{ getLongestSession().duration }} min</span>
     </div>
     <div @secondary class="bg-white rounded-xl p-6 shadow-sm">
-      total meditation: {{ getTotalDuration() }} min
+      <span class="font-bold">Total Meditation Time:</span>
+      <span class="ml-2">{{ getTotalDuration() }} min</span>
     </div>
   </div>
 
@@ -15,7 +17,7 @@
     <div class="relative">
       <div class="absolute left-4 top-0 h-full w-0.5 bg-gray-200"></div>
 
-      @for(session of mySessions | slice:0:5; track $index) {
+      @for(session of mySessions | slice:0:8; track $index) {
       <div class="relative mb-8 pl-12">
         <div
           class="absolute mt-6 left-0 w-8 h-8 rounded-full flex items-center justify-center"
