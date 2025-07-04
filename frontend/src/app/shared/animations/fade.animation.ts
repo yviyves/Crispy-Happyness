@@ -6,7 +6,5 @@ export const fadeInOut = (delay: number = 0, name: string = 'fadeInOut') =>
       style({ opacity: 0 }),
       animate(`500ms ${delay}ms ease-in-out`, style({ opacity: 1 })),
     ]),
-    transition(':leave', [
-      animate(`500ms ${delay}ms ease-in-out`, style({ opacity: 0 })),
-    ]),
+    transition(':leave', [animate(`0ms ease-in-out`, style({ opacity: 0 }))]),
   ]);
