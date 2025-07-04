@@ -1,4 +1,5 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -7,6 +8,7 @@ export class MeditationTimerService {
   meditationIsRunning = signal<boolean>(false);
   remainingDurationInSeconds = signal(0);
   meditationHasStopped = signal<boolean>(false);
+  http = inject(HttpClient);
 
   countingInterval: any;
 
@@ -51,6 +53,18 @@ export class MeditationTimerService {
         this.meditationIsRunning.set(false);
         this.meditationHasStopped.set(true);
         clearInterval(this.countingInterval);
+        this.http
+          .post('http://localhost:3000/meditation-sessions', {
+            duration: Math.round(durationInSeconds / 60),
+          })
+          .subscribe({
+            next: (response) => {
+              console.log('Meditation session saved:', response);
+            },
+            error: (error) => {
+              console.error('Error saving meditation session:', error);
+            },
+          });
       }
     }, 1000);
   }
