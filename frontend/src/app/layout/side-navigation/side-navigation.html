@@ -1,7 +1,17 @@
 <mat-nav-list>
   <a
     mat-list-item
-    routerLink="/"
+    routerLink="/meditation"
+    routerLinkActive="active"
+    [matTooltip]="'Meditation'"
+    [matTooltipPosition]="'right'"
+  >
+    <mat-icon>self_improvement</mat-icon>
+  </a>
+  <a
+    mat-list-item
+    class="my-4"
+    routerLink="/dashboard"
     routerLinkActive="active"
     [matTooltip]="'Dashboard'"
     [matTooltipPosition]="'right'"
