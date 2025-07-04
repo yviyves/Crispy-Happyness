@@ -23,7 +23,7 @@ import { fadeInOut } from '../../../shared/animations/fade.animation';
   templateUrl: './meditation-main.html',
   styleUrls: ['./meditation-main.scss'],
   standalone: true,
-  animations: [verticalSlide, fadeInOut],
+  animations: [verticalSlide, fadeInOut(0)],
 })
 export class MeditationMain implements OnInit {
   meditationTimerService = inject(MeditationTimerService);
