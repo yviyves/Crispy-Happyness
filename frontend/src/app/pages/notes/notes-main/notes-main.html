@@ -1,1 +1,10 @@
-{{ myTest$ | async }}
+<section class="p-16">
+  <div @verticalSlide class="flex flex-col gap-6">
+    @for(meditationSession of mySessions$ | async; track $index) {
+    <div>
+      Date: {{ meditationSession.date | date : "dd.MM.yyyy, HH:mm" }} - Length:
+      {{ meditationSession.duration }} min
+    </div>
+    }
+  </div>
+</section>
