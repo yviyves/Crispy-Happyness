@@ -1,8 +1,12 @@
+@if (!isLoginPage()) {
 <app-header @header class="sticky top-0 z-50"></app-header>
+}
 <mat-drawer-container class="h-full w-full">
+  @if (!isLoginPage()) {
   <mat-drawer mode="side" [opened]="sideNavIsExtendedStore.isExtended()">
     <app-side-navigation @sideNav></app-side-navigation>
   </mat-drawer>
+  }
   <mat-drawer-content @content><router-outlet /></mat-drawer-content>
 </mat-drawer-container>
 @if (overlayService.showOverlay()) {

@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LottieComponent } from 'ngx-lottie';
 import { fadeInOut } from '../../../shared/animations/fade.animation';
+import { MeditationQuotesService } from '../services/meditation-quotes-service';
 
 @Component({
   selector: 'app-meditation-main',
@@ -30,6 +31,7 @@ import { fadeInOut } from '../../../shared/animations/fade.animation';
 })
 export class MeditationMain implements OnInit {
   meditationTimerService = inject(MeditationTimerService);
+  meditationQuotesService = inject(MeditationQuotesService);
   overlayService = inject(OverlayService);
   durationFormControl = new FormControl<number | null>(5, {
     validators: [
@@ -46,6 +48,8 @@ export class MeditationMain implements OnInit {
     autoplay: true,
     loop: true,
   };
+
+  randomMeditationQuote = this.meditationQuotesService.getRandomQuote();
 
   constructor() {
     effect(() => {

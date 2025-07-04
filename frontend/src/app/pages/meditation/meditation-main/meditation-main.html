@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center gap-4 h-full justify-around">
     @if(!meditationTimerService.meditationIsRunning()) {
     <div @primary class="flex bg-white rounded-xl p-6 shadow-sm w-128">
-      <span class="mx-auto">Some cool inspirational meditation line...</span>
+      <span class="mx-auto">{{ randomMeditationQuote }}</span>
     </div>
     }
     <div>
@@ -27,15 +27,17 @@
           Stop Meditation
         </button>
         } @else {
-        <div class="flex flex-col gap-2 bg-white rounded-xl p-6 shadow-sm">
-          <mat-form-field @secondary appearance="outline">
+        <div
+          @secondary
+          class="flex flex-col gap-2 bg-white rounded-xl p-6 shadow-sm"
+        >
+          <mat-form-field appearance="outline">
             <mat-label>Duration in Minutes</mat-label>
             <input matInput [formControl]="durationFormControl" />
             <mat-error>Invalid duration</mat-error>
           </mat-form-field>
           <button
             mat-flat-button
-            @secondary
             color="primary"
             [disabled]="durationFormControl.invalid"
             (click)="startMeditation()"

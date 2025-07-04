@@ -5,7 +5,7 @@ import {
   MatSidenavModule,
 } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet, Router } from '@angular/router';
 import { Header } from './layout/header/header';
 import { SideNavigation } from './layout/side-navigation/side-navigation';
 import { SideNavIsExtendedStore } from './layout/services/side-nav-is-extended-store';
@@ -37,4 +37,9 @@ import { fadeInOut } from './shared/animations/fade.animation';
 export class App {
   protected sideNavIsExtendedStore = inject(SideNavIsExtendedStore);
   protected overlayService = inject(OverlayService);
+  protected router = inject(Router);
+
+  isLoginPage(): boolean {
+    return this.router.url === '/login';
+  }
 }

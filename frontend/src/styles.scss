@@ -16,3 +16,12 @@ body {
 .mdc-notched-outline__notch {
   border-right: none !important;
 }
+
+:root {
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: #3f51b5,
+      container-text-color: white,
+    )
+  );
+}
