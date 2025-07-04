@@ -23,7 +23,7 @@ export class MeditationMain implements OnInit {
         this.overlayService.showOverlay.set(true);
         setTimeout(() => {
           this.overlayService.showOverlay.set(false);
-        }, 2000);
+        }, 4000);
       }
     });
   }
