@@ -24,20 +24,22 @@
           Stop Meditation
         </button>
         } @else {
-        <mat-form-field @secondary appearance="outline">
-          <mat-label>Duration in Minutes</mat-label>
-          <input matInput [formControl]="durationFormControl" />
-          <mat-error>Invalid duration</mat-error>
-        </mat-form-field>
-        <button
-          mat-flat-button
-          @tertiary
-          color="primary"
-          [disabled]="durationFormControl.invalid"
-          (click)="startMeditation()"
-        >
-          Start Meditation
-        </button>
+        <div class="flex flex-col gap-2 bg-white rounded-xl p-6 shadow-sm">
+          <mat-form-field @secondary appearance="outline">
+            <mat-label>Duration in Minutes</mat-label>
+            <input matInput [formControl]="durationFormControl" />
+            <mat-error>Invalid duration</mat-error>
+          </mat-form-field>
+          <button
+            mat-flat-button
+            @secondary
+            color="primary"
+            [disabled]="durationFormControl.invalid"
+            (click)="startMeditation()"
+          >
+            Start Meditation
+          </button>
+        </div>
         }
       </div>
     </div>
