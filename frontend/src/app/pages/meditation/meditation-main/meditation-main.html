@@ -1,15 +1,29 @@
-<section class="p-16 h-full flex flex-col justify-center items-center">
-  @if (meditationTimerService.meditationIsRunning()) {
-  <div class="mb-10 text-2xl">
-    {{ meditationTimerService.remainingDurationInSeconds() | formatTime }}
+<section class="p-16 h-full flex justify-center items-center">
+  <div @verticalSlide class="flex flex-col gap-6 my-auto">
+    @if (meditationTimerService.meditationIsRunning()) {
+    <div class="w-64" @fadeInOut>
+      <ng-lottie [options]="meditationAnimation"></ng-lottie>
+    </div>
+    <div class="text-2xl mx-auto">
+      {{ meditationTimerService.remainingDurationInSeconds() | formatTime }}
+    </div>
+    <button mat-flat-button color="primary" (click)="stopMeditation()">
+      Stop Meditation
+    </button>
+    } @else {
+    <mat-form-field appearance="outline">
+      <mat-label>Duration in Minutes</mat-label>
+      <input matInput [formControl]="durationFormControl" />
+      <mat-error>Invalid duration</mat-error>
+    </mat-form-field>
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="durationFormControl.invalid"
+      (click)="startMeditation()"
+    >
+      Start Meditation
+    </button>
+    }
   </div>
-  }
-  <button
-    @verticalSlide
-    mat-flat-button
-    color="primary"
-    (click)="startMeditation()"
-  >
-    Start Meditation
-  </button>
 </section>

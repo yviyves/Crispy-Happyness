@@ -11,3 +11,8 @@ body {
   color: var(--mat-sys-on-surface);
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+// Style to fix the weird border with angular material + tailwind
+.mdc-notched-outline__notch {
+  border-right: none !important;
+}
