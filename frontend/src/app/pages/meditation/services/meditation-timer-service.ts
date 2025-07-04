@@ -1,5 +1,6 @@
 import { Injectable, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,7 @@ export class MeditationTimerService {
   remainingDurationInSeconds = signal(0);
   meditationHasStopped = signal<boolean>(false);
   http = inject(HttpClient);
+  router = inject(Router);
 
   countingInterval: any;
 
@@ -60,6 +62,7 @@ export class MeditationTimerService {
           .subscribe({
             next: (response) => {
               console.log('Meditation session saved:', response);
+              this.router.navigate(['/notes']);
             },
             error: (error) => {
               console.error('Error saving meditation session:', error);

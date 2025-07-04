@@ -1,29 +1,45 @@
 <section class="p-16 h-full flex justify-center items-center">
-  <div @verticalSlide class="flex flex-col gap-6 my-auto">
-    @if (meditationTimerService.meditationIsRunning()) {
-    <div class="w-64" @fadeInOut>
-      <ng-lottie [options]="meditationAnimation"></ng-lottie>
+  <div class="flex flex-col items-center gap-4 h-full justify-around">
+    @if(!meditationTimerService.meditationIsRunning()) {
+    <div @primary class="flex bg-white rounded-xl p-6 shadow-sm w-128">
+      <span class="mx-auto">Some cool inspirational meditation line...</span>
     </div>
-    <div class="text-2xl mx-auto">
-      {{ meditationTimerService.remainingDurationInSeconds() | formatTime }}
-    </div>
-    <button mat-flat-button color="primary" (click)="stopMeditation()">
-      Stop Meditation
-    </button>
-    } @else {
-    <mat-form-field appearance="outline">
-      <mat-label>Duration in Minutes</mat-label>
-      <input matInput [formControl]="durationFormControl" />
-      <mat-error>Invalid duration</mat-error>
-    </mat-form-field>
-    <button
-      mat-flat-button
-      color="primary"
-      [disabled]="durationFormControl.invalid"
-      (click)="startMeditation()"
-    >
-      Start Meditation
-    </button>
     }
+    <div>
+      <div class="flex flex-col gap-4 my-auto">
+        @if (meditationTimerService.meditationIsRunning()) {
+        <div @tertiary class="w-64 align-self-center">
+          <ng-lottie [options]="meditationAnimation"></ng-lottie>
+        </div>
+        <div @quaternary class="text-2xl mx-auto">
+          {{ meditationTimerService.remainingDurationInSeconds() | formatTime }}
+        </div>
+        <button
+          @quinary
+          class="mt-10"
+          mat-flat-button
+          color="primary"
+          (click)="stopMeditation()"
+        >
+          Stop Meditation
+        </button>
+        } @else {
+        <mat-form-field @secondary appearance="outline">
+          <mat-label>Duration in Minutes</mat-label>
+          <input matInput [formControl]="durationFormControl" />
+          <mat-error>Invalid duration</mat-error>
+        </mat-form-field>
+        <button
+          mat-flat-button
+          @tertiary
+          color="primary"
+          [disabled]="durationFormControl.invalid"
+          (click)="startMeditation()"
+        >
+          Start Meditation
+        </button>
+        }
+      </div>
+    </div>
   </div>
 </section>

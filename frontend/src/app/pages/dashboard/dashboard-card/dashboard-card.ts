@@ -9,6 +9,6 @@ import { verticalSlide } from '../../../shared/animations/basicAnimations';
   templateUrl: './dashboard-card.html',
   styleUrl: './dashboard-card.scss',
   standalone: true,
-  animations: [verticalSlide],
+  animations: [verticalSlide()],
 })
 export class DashboardCard {}

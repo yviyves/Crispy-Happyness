@@ -2,7 +2,10 @@ import { Component, inject, effect, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MeditationTimerService } from '../services/meditation-timer-service';
 import { FormatTimePipe } from '../../../shared/pipes/format-time.pipe';
-import { verticalSlide } from '../../../shared/animations/basicAnimations';
+import {
+  verticalSlide,
+  verticalSlides,
+} from '../../../shared/animations/basicAnimations';
 import { OverlayService } from '../../../shared/components/overlay/overlay-service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -23,7 +26,7 @@ import { fadeInOut } from '../../../shared/animations/fade.animation';
   templateUrl: './meditation-main.html',
   styleUrls: ['./meditation-main.scss'],
   standalone: true,
-  animations: [verticalSlide, fadeInOut(0)],
+  animations: [verticalSlides, fadeInOut(0)],
 })
 export class MeditationMain implements OnInit {
   meditationTimerService = inject(MeditationTimerService);

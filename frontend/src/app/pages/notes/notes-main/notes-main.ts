@@ -1,8 +1,11 @@
-import { AsyncPipe, DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
-import { verticalSlide } from '../../../shared/animations/basicAnimations';
-
+import { Component, inject, OnInit } from '@angular/core';
+import {
+  verticalSlide,
+  verticalSlides,
+} from '../../../shared/animations/basicAnimations';
+import { NgApexchartsModule } from 'ng-apexcharts';
 interface MeditationSession {
   id: number;
   duration: number;
@@ -11,15 +14,31 @@ interface MeditationSession {
 
 @Component({
   selector: 'app-notes-main',
-  imports: [AsyncPipe, DatePipe],
+  imports: [DatePipe, NgApexchartsModule, CommonModule],
   templateUrl: './notes-main.html',
   styleUrl: './notes-main.scss',
   standalone: true,
-  animations: [verticalSlide],
+  animations: verticalSlides,
 })
-export class NotesMain {
+export class NotesMain implements OnInit {
   http = inject(HttpClient);
-  mySessions$ = this.http.get<MeditationSession[]>(
-    'http://localhost:3000/meditation-sessions'
-  );
+  mySessions: MeditationSession[] = [];
+
+  ngOnInit(): void {
+    this.http
+      .get<MeditationSession[]>('http://localhost:3000/meditation-sessions')
+      .subscribe((sessions) => {
+        this.mySessions = sessions.sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
+      });
+  }
+
+  getLongestSession() {
+    return this.mySessions.reduce((a, b) => (a.duration > b.duration ? a : b));
+  }
+
+  getTotalDuration() {
+    return this.mySessions.reduce((a, b) => a + b.duration, 0);
+  }
 }
