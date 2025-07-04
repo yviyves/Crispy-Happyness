@@ -1,22 +1,25 @@
-<section class="p-24 h-full flex flex-col items-center justify-center gap-12">
+<section
+  class="p-24 h-[calc(100vh-100px)] flex flex-col items-center justify-center gap-12"
+>
   <div class="flex flex-row items-center w-full justify-between gap-20">
-    <div class="flex flex-col gap-20">
-      <h1>ZenDu</h1>
+    <div class="flex flex-col gap-20 ml-20">
+      <h1 class="text-4xl font-bold">ZenDu</h1>
       <form
+        [formGroup]="formGroup"
         class="flex flex-col items-center"
         style="align-self: flex-start"
-        (submit)="onSubmit()"
+        (submit)="onSubmit($event)"
       >
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
-          <input matInput />
+          <input matInput formControlName="email" />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
-          <input matInput type="password" />
+          <input matInput type="password" formControlName="password" />
         </mat-form-field>
         <button
-          style="align-self: flex-end; width: 200px"
+          style="align-self: flex-start; width: 200px"
           type="submit"
           mat-flat-button
           color="primary"
@@ -26,10 +29,15 @@
       </form>
     </div>
     <img
-      class="rounded-xl"
+      class="rounded-xl mr-20"
       style="width: 800px; height: 600px; align-self: flex-end"
       src="login_screen.jpg"
       alt="Login Screen"
     />
   </div>
 </section>
+<div class="flex flex-col items-center">
+  <span>Impressum</span>
+  <span>Yves Bürger</span>
+  <span>Imprint</span>
+</div>
