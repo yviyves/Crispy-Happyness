@@ -56,7 +56,7 @@ export class MeditationTimerService {
         this.meditationHasStopped.set(true);
         clearInterval(this.countingInterval);
         this.http
-          .post('http://localhost:3000/meditation-sessions', {
+          .post('/api/meditation-sessions', {
             duration: Math.round(durationInSeconds / 60),
           })
           .subscribe({

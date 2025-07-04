@@ -26,7 +26,7 @@ export class NotesMain implements OnInit {
 
   ngOnInit(): void {
     this.http
-      .get<MeditationSession[]>('http://localhost:3000/meditation-sessions')
+      .get<MeditationSession[]>('/api/meditation-sessions')
       .subscribe((sessions) => {
         this.mySessions = sessions.sort(
           (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()

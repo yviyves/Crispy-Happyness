@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://crispy-happyness.onrender.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "logLevel": "debug"
+  }
+}

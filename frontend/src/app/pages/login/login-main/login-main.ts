@@ -38,7 +38,7 @@ export class LoginMain {
     event.preventDefault(); // This prevents the default form submission
 
     this.http
-      .post('http://localhost:3000/login', {
+      .post('/api/login', {
         email: this.formGroup.value.email,
         password: this.formGroup.value.password,
       })
