@@ -44,7 +44,17 @@ export class LoginMain implements AfterViewInit {
       {
         xPercent: 40,
         duration: 1,
-        ease: 'power1.inOut',
+        delay: 0.6,
+        ease: 'expo.inOut',
+      }
+    );
+    gsap.fromTo(
+      '#login-card',
+      { yPercent: 20 },
+      {
+        yPercent: 0,
+        duration: 1,
+        ease: 'power2.inOut',
       }
     );
     gsap.fromTo(
@@ -54,7 +64,7 @@ export class LoginMain implements AfterViewInit {
         yPercent: 0,
         duration: 1,
         delay: 0.4,
-        ease: 'power1.inOut',
+        ease: 'expo.inOut',
       }
     );
     gsap.fromTo(
@@ -64,7 +74,7 @@ export class LoginMain implements AfterViewInit {
         opacity: 1,
         duration: 1,
         delay: 0.8,
-        ease: 'power1.inOut',
+        ease: 'expo.inOut',
       }
     );
     gsap.fromTo(
@@ -73,11 +83,11 @@ export class LoginMain implements AfterViewInit {
       {
         x: 40,
         duration: 1.5,
-        delay: 0.4,
+        delay: 2,
         repeat: -1,
         repeatDelay: 1,
         yoyo: true,
-        ease: 'power1.inOut',
+        ease: 'expo.inOut',
       }
     );
     gsap.fromTo(
@@ -86,11 +96,11 @@ export class LoginMain implements AfterViewInit {
       {
         y: -40,
         duration: 2,
-        delay: 0.7,
+        delay: 2.2,
         repeat: -1,
         repeatDelay: 1.8,
         yoyo: true,
-        ease: 'power1.inOut',
+        ease: 'expo.inOut',
       }
     );
   }
