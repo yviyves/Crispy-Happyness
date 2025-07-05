@@ -6,7 +6,7 @@
 /out-tsc
 /bazel-out
 
-/
+/src/styles.css
 
 # Node
 /node_modules
