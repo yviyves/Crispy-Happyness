@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "postcss src/styles.scss -o src/styles.css && ng serve",
+    "start": "postcss src/styles.scss && ng serve",
+    "start:prod": "postcss src/styles.scss && ng serve --configuration production",
     "build": "ng build",
+    "build:production": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

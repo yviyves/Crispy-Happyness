@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { gsap } from 'gsap';
 import { MatDividerModule } from '@angular/material/divider';
+import { ApiService } from '../../../shared/services/api-service';
 
 @Component({
   selector: 'app-login-main',
@@ -29,7 +30,7 @@ import { MatDividerModule } from '@angular/material/divider';
 })
 export class LoginMain implements AfterViewInit {
   router = inject(Router);
-  http = inject(HttpClient);
+  apiService = inject(ApiService);
   private _snackBar = inject(MatSnackBar);
 
   formGroup = new FormGroup({
@@ -50,9 +51,9 @@ export class LoginMain implements AfterViewInit {
     );
     gsap.fromTo(
       '#login-card',
-      { yPercent: 20 },
+      { opacity: 0 },
       {
-        yPercent: 0,
+        opacity: 1,
         duration: 1,
         ease: 'power2.inOut',
       }
@@ -112,8 +113,8 @@ export class LoginMain implements AfterViewInit {
   onSubmit(event: Event) {
     event.preventDefault(); // This prevents the default form submission
 
-    this.http
-      .post('/api/login', {
+    this.apiService
+      .post('login', {
         email: this.formGroup.value.email,
         password: this.formGroup.value.password,
       })

@@ -1,6 +1,6 @@
-import { Injectable, signal, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../../../shared/services/api-service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ export class MeditationTimerService {
   meditationIsRunning = signal<boolean>(false);
   remainingDurationInSeconds = signal(0);
   meditationHasStopped = signal<boolean>(false);
-  http = inject(HttpClient);
+  apiService = inject(ApiService);
   router = inject(Router);
 
   countingInterval: any;
@@ -55,8 +55,8 @@ export class MeditationTimerService {
         this.meditationIsRunning.set(false);
         this.meditationHasStopped.set(true);
         clearInterval(this.countingInterval);
-        this.http
-          .post('/api/meditation-sessions', {
+        this.apiService
+          .post('meditation-sessions', {
             duration: Math.round(durationInSeconds / 60),
           })
           .subscribe({

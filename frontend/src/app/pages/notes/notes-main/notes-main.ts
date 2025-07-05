@@ -6,6 +6,7 @@ import {
   verticalSlides,
 } from '../../../shared/animations/basicAnimations';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { ApiService } from '../../../shared/services/api-service';
 interface MeditationSession {
   id: number;
   duration: number;
@@ -21,12 +22,12 @@ interface MeditationSession {
   animations: verticalSlides,
 })
 export class NotesMain implements OnInit {
-  http = inject(HttpClient);
+  apiService = inject(ApiService);
   mySessions: MeditationSession[] = [];
 
   ngOnInit(): void {
-    this.http
-      .get<MeditationSession[]>('/api/meditation-sessions')
+    this.apiService
+      .get<MeditationSession[]>('meditation-sessions')
       .subscribe((sessions) => {
         this.mySessions = sessions.sort(
           (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
