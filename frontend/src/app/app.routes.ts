@@ -1,21 +1,22 @@
 import { Routes } from '@angular/router';
-import { DashboardMain } from './pages/dashboard/dashboard-main/dashboard-main';
-import { NotesMain } from './pages/notes/notes-main/notes-main';
-import { MeditationMain } from './pages/meditation/meditation-main/meditation-main';
-import { LoginMain } from './pages/login/login-main/login-main';
 
 export const routes: Routes = [
   {
     path: 'notes',
-    component: NotesMain,
+    loadComponent: () =>
+      import('./pages/notes/notes-main/notes-main').then((m) => m.NotesMain),
   },
   {
     path: 'meditation',
-    component: MeditationMain,
+    loadComponent: () =>
+      import('./pages/meditation/meditation-main/meditation-main').then(
+        (m) => m.MeditationMain
+      ),
   },
   {
     path: 'login',
-    component: LoginMain,
+    loadComponent: () =>
+      import('./pages/login/login-main/login-main').then((m) => m.LoginMain),
   },
   {
     path: '**',
