@@ -2,6 +2,13 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
+    path: 'login',
+    loadComponent: () =>
+      import(
+        /* webpackChunkName: "login-main" */ './pages/login/login-main/login-main'
+      ).then((m) => m.LoginMain),
+  },
+  {
     path: 'notes',
     loadComponent: () =>
       import(
@@ -14,13 +21,6 @@ export const routes: Routes = [
       import(
         /* webpackChunkName: "meditation-main" */ './pages/meditation/meditation-main/meditation-main'
       ).then((m) => m.MeditationMain),
-  },
-  {
-    path: 'login',
-    loadComponent: () =>
-      import(
-        /* webpackChunkName: "login-main" */ './pages/login/login-main/login-main'
-      ).then((m) => m.LoginMain),
   },
   {
     path: '**',
