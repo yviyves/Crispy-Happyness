@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, inject } from '@angular/core';
 import {
   FormControl,
@@ -7,13 +6,15 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { gsap } from 'gsap';
-import { MatDividerModule } from '@angular/material/divider';
 import { ApiService } from '../../../shared/services/api-service';
+import { CommonModule } from '@angular/common';
+import { GeneralBackground } from '../../../shared/components/general-background/general-background';
 
 @Component({
   selector: 'app-login-main',
@@ -23,6 +24,8 @@ import { ApiService } from '../../../shared/services/api-service';
     MatInputModule,
     MatButtonModule,
     MatDividerModule,
+    CommonModule,
+    GeneralBackground,
   ],
   templateUrl: './login-main.html',
   styleUrl: './login-main.scss',
@@ -75,32 +78,6 @@ export class LoginMain implements AfterViewInit {
         opacity: 1,
         duration: 1,
         delay: 0.8,
-        ease: 'expo.inOut',
-      }
-    );
-    gsap.fromTo(
-      '#dividerVertical',
-      { x: 0 },
-      {
-        x: 40,
-        duration: 1.5,
-        delay: 2,
-        repeat: -1,
-        repeatDelay: 1,
-        yoyo: true,
-        ease: 'expo.inOut',
-      }
-    );
-    gsap.fromTo(
-      '#dividerHorizontal',
-      { y: 0 },
-      {
-        y: -40,
-        duration: 2,
-        delay: 2.2,
-        repeat: -1,
-        repeatDelay: 1.8,
-        yoyo: true,
         ease: 'expo.inOut',
       }
     );

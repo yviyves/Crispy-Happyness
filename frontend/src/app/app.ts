@@ -12,6 +12,7 @@ import { SideNavIsExtendedStore } from './layout/services/side-nav-is-extended-s
 import { Overlay } from './shared/components/overlay/overlay';
 import { OverlayService } from './shared/components/overlay/overlay-service';
 import { fadeInOut } from './shared/animations/fade.animation';
+import { GeneralBackground } from './shared/components/general-background/general-background';
 @Component({
   selector: 'app-root',
   imports: [
@@ -24,6 +25,7 @@ import { fadeInOut } from './shared/animations/fade.animation';
     Header,
     SideNavigation,
     Overlay,
+    GeneralBackground,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',

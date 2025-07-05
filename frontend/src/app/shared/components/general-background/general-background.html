@@ -1,0 +1,18 @@
+<div class="absolute" style="z-index: -1; width: 100%; height: 100%">
+  <div class="flex flex-col gap-6 p-12">
+    @for (row of [1, 2, 3, 4, 5]; track $index) {
+    <div class="flex gap-6">
+      @for (col of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track $index) {
+      <div
+        id="box"
+        [style.visibility]="hideBox(row, col) ? 'hidden' : 'visible'"
+        [ngClass]="isSpecialBox(row, col) ? 'special-box' : ''"
+        [style.opacity]="opacityForBox(row)"
+        [style.background]="getBoxColor(row, col)"
+        class="rounded-xl w-[150px] h-[150px]"
+      ></div>
+      }
+    </div>
+    }
+  </div>
+</div>
