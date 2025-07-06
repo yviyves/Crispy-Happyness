@@ -19,6 +19,7 @@ import { fadeInOut } from './shared/animations/fade.animation';
 import { Overlay } from './shared/components/overlay/overlay';
 import { OverlayService } from './shared/components/overlay/overlay-service';
 import { filter, take } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,7 @@ import { filter, take } from 'rxjs/operators';
     MatSidenavModule,
     MatDrawerContainer,
     MatListModule,
+    CommonModule,
     MatTooltipModule,
     RouterModule,
     Header,
@@ -66,15 +68,17 @@ export class App {
           ease: 'power2.inOut',
         });
       } else {
-        gsap.set('#content', {
+        gsap.to('#content', {
           opacity: 1,
+          duration: 0.5,
+          ease: 'power2.inOut',
         });
       }
     });
   }
 
-  isLoginPage(): boolean {
+  isLoginOrRegistrationPage(): boolean {
     if (!this.isInitialized) return true;
-    return this.router.url === '/login';
+    return this.router.url === '/login' || this.router.url === '/register';
   }
 }

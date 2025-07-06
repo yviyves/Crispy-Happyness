@@ -1,13 +1,19 @@
-@if (!isLoginPage()) {
+@if (!isLoginOrRegistrationPage()) {
 <app-header @header class="sticky top-0 z-50"></app-header>
 }
 <mat-drawer-container class="h-full w-full">
-  @if (!isLoginPage()) {
+  @if (!isLoginOrRegistrationPage()) {
   <mat-drawer mode="side" [opened]="sideNavIsExtendedStore.isExtended()">
     <app-side-navigation @sideNav></app-side-navigation>
   </mat-drawer>
   }
-  <mat-drawer-content id="content" @content>
+  <mat-drawer-content
+    [ngClass]="{
+      'bg-linear-to-t from-grey-100 to-blue-100': isLoginOrRegistrationPage(),
+    }"
+    id="content"
+    @content
+  >
     <router-outlet
   /></mat-drawer-content>
 </mat-drawer-container>

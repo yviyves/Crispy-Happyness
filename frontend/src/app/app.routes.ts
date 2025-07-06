@@ -12,8 +12,8 @@ export const routes: Routes = [
     path: 'register',
     loadComponent: () =>
       import(
-        /* webpackChunkName: "register-main" */ './pages/meditation/meditation-main/meditation-main'
-      ).then((m) => m.MeditationMain),
+        /* webpackChunkName: "register-main" */ './pages/registration/registration-main/registration-main'
+      ).then((m) => m.RegistrationMain),
   },
   {
     path: 'discover',
