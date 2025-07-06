@@ -25,51 +25,54 @@ export class MeditationTimerService {
   startMeditationTimer(durationInSeconds: number) {
     this.meditationIsRunning.set(true);
     this.remainingDurationInSeconds.set(durationInSeconds);
-    this.playCompletionSound();
 
-    console.log('Meditation started.');
-    this.countingInterval = setInterval(() => {
-      this.remainingDurationInSeconds.set(
-        this.remainingDurationInSeconds() - 1
-      );
-      if (
-        this.remainingDurationInSeconds() ===
-        Math.floor((durationInSeconds * 3) / 4)
-      ) {
-        this.playPartialSound();
-        console.log('One-quarter of the meditation time is over.');
-      } else if (
-        this.remainingDurationInSeconds() === Math.floor(durationInSeconds / 2)
-      ) {
-        this.playPartialSound();
-        console.log('Half of the meditation time is over.');
-      } else if (
-        this.remainingDurationInSeconds() ===
-        Math.floor((durationInSeconds * 1) / 4)
-      ) {
-        this.playPartialSound();
-        console.log('Three-quarters of the meditation time is over.');
-      } else if (this.remainingDurationInSeconds() === 0) {
-        console.log('Meditation finished.');
-        this.playCompletionSound();
-        this.meditationIsRunning.set(false);
-        this.meditationHasStopped.set(true);
-        clearInterval(this.countingInterval);
-        this.apiService
-          .post('meditation-sessions', {
-            duration: Math.round(durationInSeconds / 60),
-          })
-          .subscribe({
-            next: (response) => {
-              console.log('Meditation session saved:', response);
-              this.router.navigate(['/notes']);
-            },
-            error: (error) => {
-              console.error('Error saving meditation session:', error);
-            },
-          });
-      }
-    }, 1000);
+    setTimeout(() => {
+      console.log('Meditation started.');
+      this.playCompletionSound();
+      this.countingInterval = setInterval(() => {
+        this.remainingDurationInSeconds.set(
+          this.remainingDurationInSeconds() - 1
+        );
+        if (
+          this.remainingDurationInSeconds() ===
+          Math.floor((durationInSeconds * 3) / 4)
+        ) {
+          this.playPartialSound();
+          console.log('One-quarter of the meditation time is over.');
+        } else if (
+          this.remainingDurationInSeconds() ===
+          Math.floor(durationInSeconds / 2)
+        ) {
+          this.playPartialSound();
+          console.log('Half of the meditation time is over.');
+        } else if (
+          this.remainingDurationInSeconds() ===
+          Math.floor((durationInSeconds * 1) / 4)
+        ) {
+          this.playPartialSound();
+          console.log('Three-quarters of the meditation time is over.');
+        } else if (this.remainingDurationInSeconds() === 0) {
+          console.log('Meditation finished.');
+          this.playCompletionSound();
+          this.meditationIsRunning.set(false);
+          this.meditationHasStopped.set(true);
+          clearInterval(this.countingInterval);
+          this.apiService
+            .post('meditation-sessions', {
+              duration: Math.round(durationInSeconds / 60),
+            })
+            .subscribe({
+              next: (response) => {
+                console.log('Meditation session saved:', response);
+                this.router.navigate(['/notes']);
+              },
+              error: (error) => {
+                console.error('Error saving meditation session:', error);
+              },
+            });
+        }
+      }, 1000);
+    }, 5000);
   }
 
   private playCompletionSound() {
