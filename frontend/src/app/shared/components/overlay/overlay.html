@@ -1,12 +1,36 @@
-<div
-  class="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-sm"
->
-  <div class="flex flex-col items-center h-64 w-64">
-    <ng-lottie
-      [options]="celebrationOptions"
-      (animationCreated)="animationCreated($event)"
-    >
-    </ng-lottie>
-    <h2 class="text-2xl font-bold">Meditation complete!</h2>
+<div id="overlay" class="fixed inset-0 flex items-center justify-center z-50">
+  <div class="relative flex flex-col items-center h-96 w-96">
+    <div class="absolute top-0" style="z-index: 100">
+      <div
+        id="overlayBox-1"
+        class="overlayBox rounded-xl bg-blue-100 left-0 top-0"
+        style="width: 30px; height: 30px"
+      ></div>
+      <div
+        id="overlayBox-2"
+        class="overlayBox rounded-xl mt-5 bg-blue-200 right-0 top-1/2"
+        style="width: 40px; height: 40px"
+      ></div>
+      <div
+        id="overlayBox-3"
+        class="overlayBox rounded-xl mt-5 bg-blue-300 right-0 top-1/2"
+        style="width: 50px; height: 50px"
+      ></div>
+      <div
+        id="overlayBox-1"
+        class="overlayBox rounded-xl bg-blue-100 left-0 top-0"
+        style="width: 50px; height: 50px"
+      ></div>
+      <div
+        id="overlayBox-2"
+        class="overlayBox rounded-xl mt-5 bg-blue-200 right-0 top-1/2"
+        style="width: 40px; height: 40px"
+      ></div>
+      <div
+        id="overlayBox-1"
+        class="overlayBox rounded-xl mt-5 bg-blue-300 right-0 top-1/2"
+        style="width: 30px; height: 30px"
+      ></div>
+    </div>
   </div>
 </div>

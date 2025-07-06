@@ -1,18 +1,14 @@
-import { Component, inject, effect, OnInit } from '@angular/core';
+import { Component, effect, inject, OnInit } from '@angular/core';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MeditationTimerService } from '../services/meditation-timer-service';
-import { FormatTimePipe } from '../../../shared/pipes/format-time.pipe';
-import {
-  verticalSlide,
-  verticalSlides,
-} from '../../../shared/animations/basicAnimations';
-import { OverlayService } from '../../../shared/components/overlay/overlay-service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { LottieComponent } from 'ngx-lottie';
+import { verticalSlides } from '../../../shared/animations/basicAnimations';
 import { fadeInOut } from '../../../shared/animations/fade.animation';
+import { OverlayService } from '../../../shared/components/overlay/overlay-service';
+import { FormatTimePipe } from '../../../shared/pipes/format-time.pipe';
 import { MeditationQuotesService } from '../services/meditation-quotes-service';
+import { MeditationTimerService } from '../services/meditation-timer-service';
 
 @Component({
   selector: 'app-meditation-main',
@@ -22,7 +18,6 @@ import { MeditationQuotesService } from '../services/meditation-quotes-service';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    LottieComponent,
   ],
   templateUrl: './meditation-main.html',
   styleUrls: ['./meditation-main.scss'],
@@ -57,7 +52,7 @@ export class MeditationMain implements OnInit {
         this.overlayService.showOverlay.set(true);
         setTimeout(() => {
           this.overlayService.showOverlay.set(false);
-        }, 4000);
+        }, 2000);
       }
     });
   }

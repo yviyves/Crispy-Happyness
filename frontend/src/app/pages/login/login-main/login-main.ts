@@ -15,6 +15,7 @@ import { gsap } from 'gsap';
 import { ApiService } from '../../../shared/services/api-service';
 import { CommonModule } from '@angular/common';
 import { GeneralBackground } from '../../../shared/components/general-background/general-background';
+import { OverlayService } from '../../../shared/components/overlay/overlay-service';
 
 @Component({
   selector: 'app-login-main',
@@ -35,6 +36,7 @@ export class LoginMain implements AfterViewInit {
   router = inject(Router);
   apiService = inject(ApiService);
   private _snackBar = inject(MatSnackBar);
+  private overlayService = inject(OverlayService);
 
   formGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -88,8 +90,7 @@ export class LoginMain implements AfterViewInit {
   }
 
   onSubmit(event: Event) {
-    event.preventDefault(); // This prevents the default form submission
-
+    event.preventDefault();
     this.apiService
       .post('login', {
         email: this.formGroup.value.email,
@@ -98,7 +99,11 @@ export class LoginMain implements AfterViewInit {
       .subscribe({
         next: (response) => {
           console.log('Login successful:', response);
-          this.router.navigate(['/meditation']);
+          this.overlayService.showOverlay.set(true);
+          setTimeout(() => {
+            this.overlayService.showOverlay.set(false);
+            this.router.navigate(['/meditation']);
+          }, 1500);
         },
         error: (error) => {
           console.log('Login failed:', error);
