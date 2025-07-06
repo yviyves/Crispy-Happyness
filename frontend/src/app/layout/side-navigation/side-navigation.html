@@ -1,21 +1,33 @@
 <mat-nav-list class="flex flex-col">
+  <div class="flex flex-col flex-grow">
+    <a
+      mat-list-item
+      routerLink="/meditation"
+      routerLinkActive="active"
+      [matTooltip]="'Meditation'"
+      [matTooltipPosition]="'right'"
+    >
+      <mat-icon>self_improvement</mat-icon>
+    </a>
+    <a
+      class="my-4"
+      mat-list-item
+      routerLink="/notes"
+      routerLinkActive="active"
+      [matTooltip]="'Statistics'"
+      [matTooltipPosition]="'right'"
+    >
+      <mat-icon>dashboard</mat-icon>
+    </a>
+  </div>
   <a
     mat-list-item
-    routerLink="/meditation"
+    class="mt-auto"
+    routerLink="/about"
     routerLinkActive="active"
-    [matTooltip]="'Meditation'"
+    [matTooltip]="'About Me'"
     [matTooltipPosition]="'right'"
   >
-    <mat-icon>self_improvement</mat-icon>
-  </a>
-  <a
-    class="my-4"
-    mat-list-item
-    routerLink="/notes"
-    routerLinkActive="active"
-    [matTooltip]="'Statistiken'"
-    [matTooltipPosition]="'right'"
-  >
-    <mat-icon>dashboard</mat-icon>
+    <mat-icon>help_outlined</mat-icon>
   </a>
 </mat-nav-list>
