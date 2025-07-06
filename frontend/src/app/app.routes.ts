@@ -9,6 +9,20 @@ export const routes: Routes = [
       ).then((m) => m.LoginMain),
   },
   {
+    path: 'register',
+    loadComponent: () =>
+      import(
+        /* webpackChunkName: "register-main" */ './pages/meditation/meditation-main/meditation-main'
+      ).then((m) => m.MeditationMain),
+  },
+  {
+    path: 'discover',
+    loadComponent: () =>
+      import(
+        /* webpackChunkName: "register-main" */ './pages/meditation/meditation-main/meditation-main'
+      ).then((m) => m.MeditationMain),
+  },
+  {
     path: 'notes',
     loadComponent: () =>
       import(

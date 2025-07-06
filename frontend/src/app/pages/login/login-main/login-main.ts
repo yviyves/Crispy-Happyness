@@ -85,6 +85,14 @@ export class LoginMain implements AfterViewInit {
     );
   }
 
+  register() {
+    this.overlayService.showOverlay.set(true);
+    setTimeout(() => {
+      this.router.navigate(['/register']);
+      this.overlayService.showOverlay.set(false);
+    }, 1500);
+  }
+
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
   }

@@ -6,6 +6,9 @@
   >
     <div class="flex flex-col bg-white gap-5 rounded-xl p-12 shadow-md">
       <span id="letter" class="text-3xl font-bold">ZenDu</span>
+      <span id="tagline" class="font-semibold mx-auto"
+        >Your personal mindfulness and productivity companion</span
+      >
       <form
         [formGroup]="formGroup"
         class="flex flex-col items-center"
@@ -29,7 +32,15 @@
           Login
         </button>
       </form>
+      <a class="cursor-pointer" (click)="register()"
+        >Don't have an account?
+        <span class="text-primary underline">Register here</span></a
+      >
+      <a class="cursor-pointer" (click)="register()">
+        <span class="text-primary underline">Discover ZenDu!</span></a
+      >
     </div>
+
     <img
       id="image"
       class="rounded-xl shadow-md"
