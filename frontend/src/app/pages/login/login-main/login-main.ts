@@ -101,8 +101,9 @@ export class LoginMain implements AfterViewInit {
           console.log('Login successful:', response);
           this.overlayService.showOverlay.set(true);
           setTimeout(() => {
-            this.overlayService.showOverlay.set(false);
-            this.router.navigate(['/meditation']);
+            this.router.navigate(['/meditation']).then(() => {
+              this.overlayService.showOverlay.set(false);
+            });
           }, 1500);
         },
         error: (error) => {
